@@ -10,22 +10,29 @@ namespace com.turbo.editor
 {
     public class CoreEditorAPI
     {
-        public static void ConfigureProject()
+        public static void ConfigureProjectSettings()
         {
             Debug.Log("Setting Default Script Defines for Standalone build target");
             PlayerSettings.SetScriptingDefineSymbols(UnityEditor.Build.NamedBuildTarget.Standalone, "TURBO");
+        }
 
+        public static void EnsureAddressable()
+        {
             if (!AddressableAssetSettingsDefaultObject.SettingsExists)
             {
                 Debug.Log("Addressable settings do not yet exist. Creating new Default settings");
                 var settings = AddressableAssetSettingsDefaultObject.GetSettings(true);
             }
+        }
+
+        public static void MakeTurbo()
+        {
             Debug.Log("Looking for AppContext");
             var op = Addressables.LoadAssetAsync<AppContext>("AppContext");
             op.Completed += HandleAppContextResult;
         }
 
-        public static void HandleAppContextResult(AsyncOperationHandle<AppContext> op)
+        private static void HandleAppContextResult(AsyncOperationHandle<AppContext> op)
         {
             if (op.Status == AsyncOperationStatus.Failed)
             {
@@ -41,7 +48,7 @@ namespace com.turbo.editor
 
         public static void CreateAppContext()
         {
-
+            EnsureAddressable();
             string path = "Assets/AppContext.asset";
 
             Debug.Log("Creating App Context");

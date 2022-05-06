@@ -6,7 +6,12 @@ namespace com.turbo.editor
     {
         //Menu Items...
 
-        [MenuItem("Turbo/Configure Project")]
-        private static void CP() => CoreEditorAPI.ConfigureProject();
+#if TURBO
+        [MenuItem("Turbo/Make Turbo")]
+        private static void MT() => CoreEditorAPI.MakeTurbo();
+#else
+        [MenuItem("Turbo/Configure Project Settings")]
+        private static void CPS() => CoreEditorAPI.ConfigureProjectSettings();
+#endif
     }
 }
