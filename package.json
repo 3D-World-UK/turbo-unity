@@ -1,0 +1,20 @@
+{
+  "name": "com.threedworld.unity.trubo",
+  "version": "0.0.1",
+  "displayName": "3D World UK - Turbo framework",
+  "unity": "2021.2",
+  "author": {
+    "name": "3enny3oy",
+    "email": "ben@3d-world.co.uk",
+    "url": "https://www.3d-world.co.uk"
+  },
+  "repository": {
+    "url": "https://github.com/3D-World-UK/turbo-unity"
+  },
+  "type": "library",
+  "hideInEditor": false,
+  "description": "Turbo framework for fast and simple development in Unity",
+  "dependencies": {
+    "com.unity.addressables": "1.19.19"
+  }
+}
